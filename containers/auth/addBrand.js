@@ -65,7 +65,6 @@ function AddBrand() {
 					onChange={formik.handleChange}
 					value={formik.values.logoFile}
 				/>
-				<input type={'file'} />
 				<Button>Submit</Button>
 			</Form>
 		</AuthContainer>
