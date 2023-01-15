@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { BsCheckLg, BsXLg } from 'react-icons/bs'
 import BasicQuestion from '../brand/basicQuestion'
 import ShareLink from '../brand/shareLink'
+import InstallPlugin from '../brand/installPlugin'
 
 const Wrapper = styled.div`
 	width: 100vw;
@@ -134,6 +135,14 @@ function SetupBrand() {
 						onNext={() => setCurrentStep(5)}
 						formData={progress[4].data}
 						onFormSave={onFormSave(4)}
+					/>
+				)}
+				{currentStep === 5 && (
+					<InstallPlugin
+						onNext={() => {
+							setCurrentStep(6)
+							onFormSave(5)({})
+						}}
 					/>
 				)}
 			</Content>

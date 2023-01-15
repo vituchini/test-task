@@ -17,6 +17,7 @@ const Wrapper = styled.section`
 `
 
 const BigTitle = styled.p`
+	font-weight: bold;
 	font-size: 32px;
 `
 
