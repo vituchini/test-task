@@ -5,6 +5,7 @@ import { BsCheckLg, BsXLg } from 'react-icons/bs'
 import BasicQuestion from '../brand/basicQuestion'
 import ShareLink from '../brand/shareLink'
 import InstallPlugin from '../brand/installPlugin'
+import SelectPlan from '../brand/selectPlan'
 
 const Wrapper = styled.div`
 	width: 100vw;
@@ -145,6 +146,7 @@ function SetupBrand() {
 						}}
 					/>
 				)}
+				{currentStep === 6 && <SelectPlan />}
 			</Content>
 		</Wrapper>
 	)

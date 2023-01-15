@@ -97,7 +97,7 @@ const Copy = styled(BsBack)`
 	cursor: pointer;
 `
 
-const InstallPlugin = ({ formData, onFormSave, onNext }) => {
+const InstallPlugin = ({ onNext }) => {
 	return (
 		<Wrapper>
 			<BigTitle>Install Website Plugin. Go LIVE!</BigTitle>
