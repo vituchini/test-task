@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { BsCheckLg, BsXLg } from 'react-icons/bs'
 import BasicQuestion from '../brand/basicQuestion'
+import ShareLink from '../brand/shareLink'
 
 const Wrapper = styled.div`
 	width: 100vw;
@@ -126,6 +127,13 @@ function SetupBrand() {
 						formData={progress[3].data}
 						onFormSave={onFormSave(3)}
 						skip
+					/>
+				)}
+				{currentStep === 4 && (
+					<ShareLink
+						onNext={() => setCurrentStep(5)}
+						formData={progress[4].data}
+						onFormSave={onFormSave(4)}
 					/>
 				)}
 			</Content>

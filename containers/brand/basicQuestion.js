@@ -19,6 +19,7 @@ const Wrapper = styled.section`
 const BigTitle = styled.p`
 	font-size: 32px;
 `
+
 const ExampleLink = styled(Link)`
 	color: #6558f5;
 	text-decoration: underline;
@@ -33,6 +34,7 @@ const Form = styled.form`
 	flex-direction: column;
 	position: relative;
 `
+
 const Skip = styled.div`
 	color: #6558f5;
 	text-decoration: underline;
@@ -55,7 +57,6 @@ const BasicQuestion = ({
 	const formik = useFormik({
 		initialValues,
 		onSubmit: (values) => {
-			console.log(values)
 			onFormSave && onFormSave(values)
 			onNext && onNext()
 		},

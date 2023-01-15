@@ -9,6 +9,7 @@ const Title = styled.div`
 `
 
 const Wrapper = styled.section`
+	background: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
