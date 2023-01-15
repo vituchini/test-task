@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 const InputWrapper = styled.div`
 	position: relative;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 `
 
 const InputStyled = styled.input`
@@ -10,13 +10,7 @@ const InputStyled = styled.input`
 	width: 100%;
 	font-size: 14px;
 	border-radius: 4px;
-	padding: ${(props) => {
-		if (props.iconProps && props.iconProps.position === 'left')
-			return '5px 12px 5px 40px'
-		if (props.iconProps && props.iconProps.position === 'right')
-			return '5px 40px 5px 12px'
-		return '5px 12px 5px 12px'
-	}};
+	padding: 5px 12px 5px 12px;
 	border: 1px solid ${(props) => (props?.error ? 'red' : 'black')};
 	&:focus-visible {
 		outline: none;

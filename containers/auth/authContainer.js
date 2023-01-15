@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Title = styled.div`
 	font-size: 32px;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 `
 
 const Wrapper = styled.section`
@@ -14,6 +14,8 @@ const Wrapper = styled.section`
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	overflow: auto;
+	padding-top: 30px;
 `
 
 const AdditionalInfo = styled.div`
