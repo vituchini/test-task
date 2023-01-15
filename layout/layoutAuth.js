@@ -8,6 +8,8 @@ const Wrapper = styled.div`
 `
 const Main = styled(WrapperScroll)`
 	height: 100vh;
+	width: 100vw;
+	font-size: 16px;
 	overflow: hidden;
 `
 
