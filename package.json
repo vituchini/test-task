@@ -1,0 +1,64 @@
+{
+	"name": "playback_interactive_videos",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"pre-commit": "lint-staged --allow-empty"
+	},
+	"lint-staged": {
+		"*.+(js|jsx)": [
+			"eslint --fix",
+			"prettier --write --ignore-unknown"
+		],
+		"*.+(json|css|md)": [
+			"prettier --write"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"dependencies": {
+		"@apollo/client": "^3.7.3",
+		"@next/font": "13.1.1",
+		"@vercel/og": "^0.0.21",
+		"cookies": "^0.8.0",
+		"eslint": "8.30.0",
+		"eslint-config-next": "13.1.1",
+		"framer-motion": "^8.0.2",
+		"graphql": "^16.6.0",
+		"graphql-request": "^5.1.0",
+		"next": "13.1.1",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-icons": "^4.7.1",
+		"styled-components": "^5.3.6",
+		"swr": "^2.0.0",
+		"universal-cookie": "^4.0.4"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.13",
+		"eslint": "^8.29.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-import-resolver-alias": "^1.1.2",
+		"eslint-plugin-import": "^2.25.3",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"husky": "^8.0.2",
+		"lint-staged": "^13.0.3",
+		"postcss": "^8.4.20",
+		"prettier": "^2.8.1",
+		"tailwindcss": "^3.2.4"
+	},
+	"resolutions": {
+		"styled-components": "^5"
+	}
+}
