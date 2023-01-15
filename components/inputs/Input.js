@@ -6,7 +6,7 @@ const InputWrapper = styled.div`
 `
 
 const InputStyled = styled.input`
-	height: 32px;
+	height: 40px;
 	width: 100%;
 	font-size: 14px;
 	border-radius: 4px;

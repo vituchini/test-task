@@ -72,7 +72,7 @@ const Button = styled.button`
 		// background-color: ${({ theme }) => theme.colors.textSlate};
 	}
 `
-const ProfileWraper = styled.div`
+const ProfileWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	margin-right: 3rem;
@@ -94,7 +94,7 @@ const ProfileWraper = styled.div`
 		}
 	}
 `
-const ThemerWrapper = styled.div`
+const ThemeWrapper = styled.div`
 	div {
 		display: flex;
 		align-items: center;
@@ -142,7 +142,7 @@ const navbar = () => {
 			<SearchWrapper>
 				<Search />
 			</SearchWrapper>
-			<ProfileWraper>
+			<ProfileWrapper>
 				<button
 					type="button"
 					onClick={() => setShowAccount(!showAccount)}
@@ -150,15 +150,15 @@ const navbar = () => {
 				>
 					<HiOutlineDotsVertical fontSize="3rem" color={colors.text} />
 				</button>
-				<ThemerWrapper>
+				<ThemeWrapper>
 					<div>
 						<span>
 							<HiOutlineUserCircle fontSize="2.5rem" color={colors.text} />
 						</span>
 						<p>Me</p>
 					</div>
-				</ThemerWrapper>
-			</ProfileWraper>
+				</ThemeWrapper>
+			</ProfileWrapper>
 		</HeaderWrapper>
 	)
 }

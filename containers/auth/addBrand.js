@@ -6,6 +6,7 @@ import Input from '../../components/inputs/Input'
 import Button from '../../components/buttons/Button'
 import AuthContainer from './authContainer'
 import FileInput from '../../components/inputs/FileInput'
+import { useRouter } from 'next/router'
 
 const Form = styled.form`
 	width: 100%;
@@ -17,6 +18,8 @@ const Form = styled.form`
 `
 
 function AddBrand() {
+	const router = useRouter()
+
 	const formik = useFormik({
 		initialValues: {
 			brandName: '',
@@ -25,8 +28,10 @@ function AddBrand() {
 		},
 		onSubmit: (values) => {
 			alert(JSON.stringify(values, null, 2))
+			router.push('/auth/setup-brand')
 		},
 	})
+
 	return (
 		<AuthContainer
 			title={'Add Your Brand'}
