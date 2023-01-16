@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import Button from '../../components/buttons/Button'
 import Input from '../../components/inputs/Input'
-import FileInput from '../../components/inputs/FileInput'
 
 const Wrapper = styled.section`
 	display: flex;
@@ -61,6 +62,24 @@ const Discount = styled.div`
 	color: red;
 	font-size: 12px;
 `
+
+const validationSchema = Yup.object().shape({
+	cardNumber: Yup.string()
+		.min(16, 'Too Short!')
+		.max(16, 'Too Long!')
+		.required('Required'),
+	cvv: Yup.string()
+		.min(3, 'Too Short!')
+		.max(3, 'Too Long!')
+		.required('Required'),
+	mmyy: Yup.string()
+		.matches(
+			/([0-9]{2})\/([0-9]{2})/,
+			'Not a valid expiration date. Example: MM/YY'
+		)
+		.required('Required'),
+})
+
 const SelectPlan = ({ formData, onFormSave, onNext }) => {
 	const initialValues =
 		Object.keys(formData).length === 0
@@ -69,6 +88,7 @@ const SelectPlan = ({ formData, onFormSave, onNext }) => {
 
 	const formik = useFormik({
 		initialValues,
+		validationSchema,
 		onSubmit: (values) => {
 			onFormSave && onFormSave(values)
 			onNext && onNext()
@@ -89,6 +109,7 @@ const SelectPlan = ({ formData, onFormSave, onNext }) => {
 							placeholder="Card Number"
 							onChange={formik.handleChange}
 							value={formik.values.cardNumber}
+							error={formik.errors.cardNumber}
 						/>
 						<SmallInputContainer>
 							<Input
@@ -100,17 +121,19 @@ const SelectPlan = ({ formData, onFormSave, onNext }) => {
 								placeholder="CVV"
 								onChange={formik.handleChange}
 								value={formik.values.cvv}
+								error={formik.errors.cvv}
 							/>
 						</SmallInputContainer>
 						<SmallInputContainer>
 							<Input
 								id="mmyy"
 								name="mmyy"
-								type="number"
+								type="text"
 								label="MM/YY"
 								placeholder="MM/YY"
 								onChange={formik.handleChange}
 								value={formik.values.mmyy}
+								error={formik.errors.mmyy}
 							/>
 						</SmallInputContainer>
 					</InputsWrapper>

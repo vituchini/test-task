@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import Button from '../../components/buttons/Button'
 
 const Wrapper = styled.section`
@@ -22,7 +24,6 @@ const Textarea = styled.textarea`
 	border: 1px solid black;
 	width: 400px;
 	height: 100px;
-	margin-bottom: 40px;
 	padding: 5px;
 `
 
@@ -35,12 +36,24 @@ const Form = styled.form`
 	position: relative;
 `
 
+const ErrorMessage = styled.div`
+	color: red;
+`
+
+const validationSchema = Yup.object().shape({
+	link: Yup.string()
+		.min(2, 'Too Short!')
+		.max(50, 'Too Long!')
+		.required('Required'),
+})
+
 const ShareLink = ({ formData, onFormSave, onNext }) => {
 	const initialValues =
 		Object.keys(formData).length === 0 ? { link: '' } : formData
 
 	const formik = useFormik({
 		initialValues,
+		validationSchema,
 		onSubmit: (values) => {
 			onFormSave && onFormSave(values)
 			onNext && onNext()
@@ -57,6 +70,9 @@ const ShareLink = ({ formData, onFormSave, onNext }) => {
 					value={formik.values.link}
 					onChange={formik.handleChange}
 				/>
+				{formik.errors.link && (
+					<ErrorMessage>{formik.errors.link}</ErrorMessage>
+				)}
 				<Button>Submit</Button>
 			</Form>
 		</Wrapper>

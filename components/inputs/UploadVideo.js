@@ -29,6 +29,10 @@ const fileTypeLimit = (allowedFileTypes) => {
 	}
 }
 
+const ErrorMessage = styled.div`
+	color: red;
+`
+
 const UploadVideo = (props) => {
 	const widgetRef = useRef(null)
 
@@ -54,6 +58,7 @@ const UploadVideo = (props) => {
 				publicKey="demopublickey"
 				validators={validators}
 			/>
+			{props.error && <ErrorMessage>{props.error}</ErrorMessage>}
 		</Wrapper>
 	)
 }

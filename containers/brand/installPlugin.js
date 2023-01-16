@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../../components/buttons/Button'
 import { BsBack } from 'react-icons/bs'
 import Image from 'next/image'
+
+import Button from '../../components/buttons/Button'
 
 const Wrapper = styled.section`
 	display: flex;

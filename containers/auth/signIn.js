@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 import Input from '../../components/inputs/Input'
 import Button from '../../components/buttons/Button'
@@ -15,15 +16,28 @@ const Form = styled.form`
 	position: relative;
 `
 
+const validationSchema = Yup.object({
+	password: Yup.string()
+		.min(8, 'Password must be 8 characters long')
+		.matches(/[0-9]/, 'Password requires a number')
+		.matches(/[a-z]/, 'Password requires a lowercase letter')
+		.matches(/[A-Z]/, 'Password requires an uppercase letter')
+		.matches(/[^\w]/, 'Password requires a symbol')
+		.required('Required'),
+	email: Yup.string().email('Invalid email address').required('Required'),
+})
+
 function SignIn() {
 	const formik = useFormik({
 		initialValues: {
 			email: '',
 			password: '',
 		},
+		validationSchema,
 		onSubmit: (values) => {
 			alert(JSON.stringify(values, null, 2))
 		},
+		validateOnChange: false,
 	})
 	return (
 		<AuthContainer
@@ -50,6 +64,7 @@ function SignIn() {
 					placeholder="Login email"
 					onChange={formik.handleChange}
 					value={formik.values.email}
+					error={formik.errors.email}
 				/>
 				<Input
 					id="password"
@@ -59,6 +74,7 @@ function SignIn() {
 					placeholder="Login password"
 					onChange={formik.handleChange}
 					value={formik.values.password}
+					error={formik.errors.password}
 				/>
 				<Button>Submit</Button>
 			</Form>

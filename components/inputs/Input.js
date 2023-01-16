@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 const InputWrapper = styled.div`
 	position: relative;
 	margin-bottom: 10px;
@@ -30,13 +31,16 @@ const InputStyled = styled.input`
 	-moz-appearance: textfield;
 `
 
-const Label = styled.label``
+const ErrorMessage = styled.div`
+	color: red;
+`
 
 const Input = (props) => {
 	return (
 		<InputWrapper>
-			{props.label && <Label>{props.label}</Label>}
+			{props.label && <label>{props.label}</label>}
 			<InputStyled {...props} onChange={props.onChange} value={props.value} />
+			{props.error && <ErrorMessage>{props.error}</ErrorMessage>}
 		</InputWrapper>
 	)
 }

@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import Input from '../../components/inputs/Input'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+import Input from '../../components/inputs/Input'
 import Button from '../../components/buttons/Button'
 import UploadVideo from '../../components/inputs/UploadVideo'
 
@@ -42,6 +44,14 @@ const Skip = styled.div`
 	cursor: pointer;
 `
 
+const validationSchema = Yup.object().shape({
+	videoText: Yup.string()
+		.min(2, 'Too Short!')
+		.max(50, 'Too Long!')
+		.required('Required'),
+	videoFile: Yup.string().required('Required'),
+})
+
 const BasicQuestion = ({
 	title,
 	exampleLink = '',
@@ -57,12 +67,13 @@ const BasicQuestion = ({
 
 	const formik = useFormik({
 		initialValues,
+		validationSchema,
 		onSubmit: (values) => {
 			onFormSave && onFormSave(values)
 			onNext && onNext()
 		},
 	})
-
+	console.log('errors', formik.errors)
 	return (
 		<Wrapper>
 			<BigTitle>{title}</BigTitle>
@@ -76,12 +87,14 @@ const BasicQuestion = ({
 					placeholder="Video Text"
 					onChange={formik.handleChange}
 					value={formik.values.videoText}
+					error={formik.errors.videoText}
 				/>
 				<UploadVideo
 					id="videoFile"
 					name="videoFile"
 					onChange={(value) => formik.setFieldValue('videoFile', value)}
 					value={formik.values.videoFile}
+					error={formik.errors.videoFile}
 				/>
 				<Button>Submit</Button>
 			</Form>
