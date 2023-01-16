@@ -97,3 +97,7 @@
 	background: #65c4fa;
 	filter: blur(150px);
 }
+
+.uploadcare--widget__button {
+	display: none;
+}

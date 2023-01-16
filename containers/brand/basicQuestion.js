@@ -80,10 +80,10 @@ const BasicQuestion = ({
 				<UploadVideo
 					id="videoFile"
 					name="videoFile"
-					onChange={(event) =>
-						formik.setFieldValue('videoFile', event.currentTarget.files[0])
-					}
-					uploaded={formik.values.videoFile}
+					// onChange={(event) =>
+					// 	formik.setFieldValue('videoFile', event.currentTarget.files[0])
+					// }
+					// uploaded={formik.values.videoFile}
 				/>
 				<Button>Submit</Button>
 			</Form>
