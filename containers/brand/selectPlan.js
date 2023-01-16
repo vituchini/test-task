@@ -62,19 +62,20 @@ const Discount = styled.div`
 	font-size: 12px;
 `
 const SelectPlan = ({ formData, onFormSave, onNext }) => {
-	const [plan, setPlan] = useState('')
+	const initialValues =
+		Object.keys(formData).length === 0
+			? { plan: '', cardNumber: '', cvv: '', mmyy: '' }
+			: formData
+
 	const formik = useFormik({
-		initialValues: {
-			cardNumber: '',
-			cvv: '',
-			mmyy: '',
-		},
+		initialValues,
 		onSubmit: (values) => {
 			onFormSave && onFormSave(values)
-			alert('Thank you for choosing us!')
+			onNext && onNext()
 		},
 	})
-	if (plan)
+
+	if (formik.values.plan)
 		return (
 			<Wrapper>
 				<BigTitle>Add Card Details</BigTitle>
@@ -90,7 +91,6 @@ const SelectPlan = ({ formData, onFormSave, onNext }) => {
 							value={formik.values.cardNumber}
 						/>
 						<SmallInputContainer>
-							{' '}
 							<Input
 								width={'600px'}
 								id="cvv"
@@ -123,11 +123,11 @@ const SelectPlan = ({ formData, onFormSave, onNext }) => {
 		<Wrapper>
 			<BigTitle>Select Plan</BigTitle>
 			<CardsContainer>
-				<Card onClick={() => setPlan('monthly')}>
+				<Card onClick={() => formik.setFieldValue('plan', 'monthly')}>
 					<p>Monthly Plan</p>
 					<div>$29/month</div>
 				</Card>
-				<Card onClick={() => setPlan('yearly')}>
+				<Card onClick={() => formik.setFieldValue('plan', 'yearly')}>
 					<div>Yearly Plan</div>
 					<div>
 						$278/year<Discount>20% OFF</Discount>
