@@ -27,14 +27,16 @@ const StepWrapper = styled.div`
 
 const StepItemStyled = styled.div`
 	color: ${({ active = false }) => (active ? '#6558f5' : 'black')};
-	border-bottom: 4px solid
+	border-bottom: 3px solid
 		${({ active = false }) => (active ? '#6558f5' : 'black')};
-	font-size: 30px;
+	font-size: 16px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	gap: 10px;
 	align-items: center;
-	padding: 0px 40px;
+	padding: 0px 50px;
+	padding-bottom: 10px;
 	cursor: pointer;
 `
 
@@ -48,14 +50,15 @@ const StepItem = ({ status = true, active = false, number = 0, onClick }) => {
 	return (
 		<StepItemStyled active={active} onClick={onClick}>
 			{status ? (
-				<BsCheckLg fontSize="35px" color={active ? '#6558f5' : 'black'} />
+				<BsCheckLg fontSize="25px" color={active ? '#6558f5' : 'green'} />
 			) : (
-				<BsXLg fontSize="35px" color={active ? '#6558f5' : 'black'} />
+				<BsXLg fontSize="25px" color={active ? '#6558f5' : 'black'} />
 			)}
-			<p>Step {number + 1}</p>
+			<p>STEP {number + 1}</p>
 		</StepItemStyled>
 	)
 }
+
 function SetupBrand() {
 	const initialProgress = [...new Array(7)].map((el, index) => ({
 		id: index,
