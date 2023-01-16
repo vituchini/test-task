@@ -14,8 +14,25 @@ const FileLabelStyled = styled.label`
 	cursor: pointer;
 `
 
+const fileTypeLimit = (allowedFileTypes) => {
+	const types = allowedFileTypes.split(' ')
+
+	return function (fileInfo) {
+		if (fileInfo.name === null) {
+			return
+		}
+		const extension = fileInfo.name.split('.').pop()
+
+		if (extension && !types.includes(extension)) {
+			throw new Error('fileType')
+		}
+	}
+}
+
 const UploadVideo = (props) => {
 	const widgetRef = useRef(null)
+
+	const validators = [fileTypeLimit('mp3 avi mp4')]
 
 	return (
 		<Wrapper>
@@ -30,10 +47,12 @@ const UploadVideo = (props) => {
 			</FileLabelStyled>
 			<Widget
 				{...props}
+				onChange={(file) => {
+					props.onChange(file?.uuid || '')
+				}}
 				ref={(ref) => (widgetRef.current = ref)}
-				publicKey="ac907022f9e84d920f6b"
-				type="file"
-				accept="video/mp4,video/x-m4v,video/*"
+				publicKey="demopublickey"
+				validators={validators}
 			/>
 		</Wrapper>
 	)
