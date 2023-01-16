@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '../../components/buttons/Button'
 import { BsBack } from 'react-icons/bs'
+import Image from 'next/image'
 
 const Wrapper = styled.section`
 	display: flex;
@@ -127,11 +128,7 @@ const InstallPlugin = ({ onNext }) => {
 				</ScriptContainer>
 				OR
 				<ShopifyContainer>
-					<img
-						src={
-							'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/1200px-Shopify_logo_2018.svg.png'
-						}
-					/>
+					<Image src={'/images/shopify.png'} width={100} height={30} />
 					<Button secondary>Install Shopify Plugin</Button>
 				</ShopifyContainer>
 			</InstallCode>
